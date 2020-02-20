@@ -41,20 +41,28 @@ export interface IEpisode {
 }
 
 export interface ILocation {
-    id: number;
-    name: string;
-    type: string;
-    dimension: string;
-    residents: [];
-    url: string;
-    created: string;
-  }
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents: [];
+  url: string;
+  created: string;
+}
 
 export type Dispatch = React.Dispatch<IAction>;
 
+export interface Column {
+  id: "name" | "type" | "dimension";
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
+}
+
 export interface ICharacterProps {
-    characters: Array<ICharacter>;
-    store: { state: IState; dispatch: any };
+  characters: Array<ICharacter>;
+  store: { state: IState; dispatch: any };
 }
 
 export interface IEpisodeProps {
@@ -63,6 +71,9 @@ export interface IEpisodeProps {
 }
 
 export interface ILocationProps {
-    locations: Array<ILocation>;
-    store: { state: IState; dispatch: any };
-  }
+  locations: Array<ILocation>;
+  store: { state: IState; dispatch: any };
+  page: number;
+  rowsPerPage: number;
+  columns: Column[];
+}
