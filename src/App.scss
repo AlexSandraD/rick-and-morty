@@ -34,3 +34,9 @@
 .location-box {
   background: rgb(50, 77, 58);
 }
+
+.character-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { Store } from "../Store";
 import { fetchCharactersAction } from "../Actions";
 import { ICharacterProps } from "../interfaces";
+import TextField from "@material-ui/core/TextField";
 
 const CharactersList = React.lazy<any>(() => import("./CharactersList"));
 
@@ -17,10 +18,29 @@ export default function Characters() {
     store: { state, dispatch }
   };
 
+  function onSearchInputChange(e: any) {
+    console.log("Search changed ..." + e.target.value);
+    // if (event.target.value) {
+    //   this.setState({ searchString: event.target.value });
+    // } else {
+    //   this.setState({ searchString: "" });
+    // }
+    // this.getCourses();
+  }
+
   return (
     <React.Suspense fallback={<div> Loadding ... </div>}>
       <div className="character-section">
-        <CharactersList {...props} />
+        <TextField
+          style={{ paddingBottom: 20 }}
+          id="searchInput"
+          placeholder="Search"
+          margin="normal"
+          onChange={onSearchInputChange}
+        />
+        <div className="character-box">
+          <CharactersList {...props} />
+        </div>
       </div>
     </React.Suspense>
   );
